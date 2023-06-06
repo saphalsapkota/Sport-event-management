@@ -1,13 +1,3 @@
-/* Image Slider */
-const slides = document.querySelectorAll('.slide');
-const next = document.querySelector('#next');
-const prev = document.querySelector('#prev');
-const tabItems = document.querySelectorAll('.tab-item');
-const tabContentItems = document.querySelectorAll('.tab-content-item');
-const auto = true; // Auto scroll
-const intervalTime = 4000;
-let slideInterval;
-
 
 // Select tab content item
 function selectItem(e) {
@@ -89,23 +79,3 @@ prev.addEventListener('click', e => {
     slideInterval = setInterval(nextSlide, intervalTime);
   }
 });
-
-// Auto slide
-if (auto) {
-  // Run next slide at interval time
-  slideInterval = setInterval(nextSlide, intervalTime);
-}
-
-// Animate Smooth Scroll
-$('#view-work').on('click', function() {
-  const images = $('#images').position().top;
-
-  $('html, body').animate(
-    {
-      scrollTop: images
-    },
-    900
-  );
-});
-
-

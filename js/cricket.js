@@ -1,13 +1,3 @@
-/* Image Slider */
-const slides = document.querySelectorAll('.slide');
-const next = document.querySelector('#next');
-const prev = document.querySelector('#prev');
-const tabItems = document.querySelectorAll('.tab-item');
-const tabContentItems = document.querySelectorAll('.tab-content-item');
-const auto = true; // Auto scroll
-const intervalTime = 4000;
-let slideInterval;
-
 
 // Select tab content item
 function selectItem(e) {
@@ -57,22 +47,6 @@ const nextSlide = () => {
   setTimeout(() => current.classList.remove('current'));
 };
 
-const prevSlide = () => {
-  // Get current class
-  const current = document.querySelector('.current');
-  // Remove current class
-  current.classList.remove('current');
-  // Check for prev slide
-  if (current.previousElementSibling) {
-    // Add current to prev sibling
-    current.previousElementSibling.classList.add('current');
-  } else {
-    // Add current to last
-    slides[slides.length - 1].classList.add('current');
-  }
-  setTimeout(() => current.classList.remove('current'));
-};
-
 // Button events
 next.addEventListener('click', e => {
   nextSlide();
@@ -89,23 +63,4 @@ prev.addEventListener('click', e => {
     slideInterval = setInterval(nextSlide, intervalTime);
   }
 });
-
-// Auto slide
-if (auto) {
-  // Run next slide at interval time
-  slideInterval = setInterval(nextSlide, intervalTime);
-}
-
-// Animate Smooth Scroll
-$('#view-work').on('click', function() {
-  const images = $('#images').position().top;
-
-  $('html, body').animate(
-    {
-      scrollTop: images
-    },
-    900
-  );
-});
-
 
